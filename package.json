@@ -1,0 +1,28 @@
+{
+  "name": "quality-troop-gestao-toperson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "yarn playwright test",
+    "test:ui": "yarn playwright test --ui",
+    "test:codegen": "npx playwright codegen https://gestao-toperson.vercel.app/login",
+    "test:debug": "yarn playwright test --debug",
+    "report": "yarn playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CristianoSFMothe/quality-troop-gestao-toperson.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CristianoSFMothe/quality-troop-gestao-toperson/issues"
+  },
+  "homepage": "https://github.com/CristianoSFMothe/quality-troop-gestao-toperson#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.18"
+  }
+}
