@@ -4,6 +4,8 @@ export const login = {
   inputEmail: 'input[name="email"]',
   inputPassword: 'input[name="password"]',
   btnEnter: 'button[type="submit"]',
+  toastError: 'li[data-type="error"]',
+  alertError: 'p[class="text-sm font-medium text-destructive"]'
 };
 
 export class LoginPage {
@@ -25,5 +27,14 @@ export class LoginPage {
     }
 
     await this.page.click(login.btnEnter);
+  }
+
+  async message(locator, message) {
+    await expect(this.page.locator(locator)).toBeVisible();
+    await expect(this.page.locator(locator)).toHaveText(message);
+  }
+
+  async messages(messages) {
+    expect(await this.page.locator(login.alertError).allTextContents()).toEqual(messages);
   }
 }
