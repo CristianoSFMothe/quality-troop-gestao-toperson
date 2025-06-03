@@ -7,7 +7,8 @@ export const register = {
   btnNemRegister: '[href="/cadastro"]',
   btnRegister: 'button[type="submit"]',
   btnLogin: '[href="/login"]',
-  textRegisterSuccess: 'data-title',
+  toastError: 'li[data-type="error"]',
+  alertError: 'p[class="text-sm font-medium text-destructive"]'
 };
 
 export class RegisterPage {
@@ -35,21 +36,21 @@ export class RegisterPage {
     if (confirmPassword !== null) {
       await this.page.fill(register.inputConfirmPassword, confirmPassword);
     }
+    await this.page.click(register.btnRegister, { force: true });
+  }
 
-    await this.page.click(register.btnRegister);
+  async clickButtonRegister() {
+    await this.page.click(register.btnRegister, { force: true });
+  }
 
-    await this.page.click(register.btnLogin);
+  async clickButtonLogin() {
+    await this.page.click(register.btnLogin, { force: true });
+  }
+
+  async message(locator, message) {
+    await expect(this.page.locator(locator)).toBeVisible();
+    await expect(this.page.locator(locator)).toHaveValue(message);
   }
 }
 
-export class AssertsRegisterPage {
-  constructor(page) {
-    this.page = page;
-  }
 
-  async assertRegisterSuccess(text) {
-    await expect(page.textRegisterSuccess(text)).toBeVisible();
-
-  }
-
-}
